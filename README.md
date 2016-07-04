@@ -9,6 +9,11 @@ GYDataCenter is built on top of [FMDB](https://github.com/ccgus/fmdb). It provid
 * Use SQL clauses to query data and if you are already familiar with SQL, you can get used to it instantly.
 * Well optimized, with features like internal cache, faulting (like that of Core Data), [ANALYZE](https://www.sqlite.org/lang_analyze.html) optimization ... 
 
+# Installation
+```
+pod 'GYDataCenter'
+```
+
 # Usage
 1) Define your model classes as normal, except making them subclasses of GYModelObject.
 ```objc
