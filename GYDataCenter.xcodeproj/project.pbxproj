@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A195982BA2153668BE849AE /* libPods-GYDataCenter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C694ABF576AAD1E30E5D07CE /* libPods-GYDataCenter.a */; };
+		B32265391D23A58300A37382 /* GYDataContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B32265381D23A58300A37382 /* GYDataContext.m */; };
+		B32703731D1CE36600B1B0A4 /* GYDataCenter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B32703721D1CE36600B1B0A4 /* GYDataCenter.h */; };
+		B32703801D1D143F00B1B0A4 /* GYDBRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = B327037D1D1D143F00B1B0A4 /* GYDBRunner.m */; };
+		B32703811D1D143F00B1B0A4 /* GYModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B327037F1D1D143F00B1B0A4 /* GYModelObject.m */; };
+		B327038A1D1D1FC500B1B0A4 /* GYDCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B32703861D1D1FC500B1B0A4 /* GYDCUtilities.m */; };
+		B327038B1D1D1FC500B1B0A4 /* GYReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = B32703881D1D1FC500B1B0A4 /* GYReflection.m */; };
+		B3D1DB501D1E2EA100645AA3 /* FMDatabaseQueue+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D1DB4F1D1E2EA100645AA3 /* FMDatabaseQueue+Async.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B327036D1D1CE36600B1B0A4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				B32703731D1CE36600B1B0A4 /* GYDataCenter.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6FEAA31934DF0092A3FC946F /* Pods-GYDataCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYDataCenter.release.xcconfig"; path = "Pods/Target Support Files/Pods-GYDataCenter/Pods-GYDataCenter.release.xcconfig"; sourceTree = "<group>"; };
+		94E997F6081FFCC01D322DF3 /* Pods-GYDataCenter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYDataCenter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GYDataCenter/Pods-GYDataCenter.debug.xcconfig"; sourceTree = "<group>"; };
+		B32265371D23A58300A37382 /* GYDataContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDataContext.h; sourceTree = "<group>"; };
+		B32265381D23A58300A37382 /* GYDataContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDataContext.m; sourceTree = "<group>"; };
+		B327036F1D1CE36600B1B0A4 /* libGYDataCenter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGYDataCenter.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32703721D1CE36600B1B0A4 /* GYDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYDataCenter.h; sourceTree = "<group>"; };
+		B327037C1D1D143F00B1B0A4 /* GYDBRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDBRunner.h; sourceTree = "<group>"; };
+		B327037D1D1D143F00B1B0A4 /* GYDBRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDBRunner.m; sourceTree = "<group>"; };
+		B327037E1D1D143F00B1B0A4 /* GYModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYModelObject.h; sourceTree = "<group>"; };
+		B327037F1D1D143F00B1B0A4 /* GYModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYModelObject.m; sourceTree = "<group>"; };
+		B32703851D1D1FC500B1B0A4 /* GYDCUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDCUtilities.h; sourceTree = "<group>"; };
+		B32703861D1D1FC500B1B0A4 /* GYDCUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDCUtilities.m; sourceTree = "<group>"; };
+		B32703871D1D1FC500B1B0A4 /* GYReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYReflection.h; sourceTree = "<group>"; };
+		B32703881D1D1FC500B1B0A4 /* GYReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYReflection.m; sourceTree = "<group>"; };
+		B350EDB71D25398900BE8187 /* GYModelObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYModelObjectProtocol.h; sourceTree = "<group>"; };
+		B3D1DB4E1D1E2EA100645AA3 /* FMDatabaseQueue+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FMDatabaseQueue+Async.h"; path = "FMDBExtension/FMDatabaseQueue+Async.h"; sourceTree = "<group>"; };
+		B3D1DB4F1D1E2EA100645AA3 /* FMDatabaseQueue+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FMDatabaseQueue+Async.m"; path = "FMDBExtension/FMDatabaseQueue+Async.m"; sourceTree = "<group>"; };
+		C694ABF576AAD1E30E5D07CE /* libPods-GYDataCenter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GYDataCenter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B327036C1D1CE36600B1B0A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A195982BA2153668BE849AE /* libPods-GYDataCenter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6C3D54BAE44F965B3C846779 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C694ABF576AAD1E30E5D07CE /* libPods-GYDataCenter.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		929E61462ADE978AFD94FB81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94E997F6081FFCC01D322DF3 /* Pods-GYDataCenter.debug.xcconfig */,
+				6FEAA31934DF0092A3FC946F /* Pods-GYDataCenter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B32703661D1CE36600B1B0A4 = {
+			isa = PBXGroup;
+			children = (
+				B32703711D1CE36600B1B0A4 /* GYDataCenter */,
+				B32703701D1CE36600B1B0A4 /* Products */,
+				929E61462ADE978AFD94FB81 /* Pods */,
+				6C3D54BAE44F965B3C846779 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B32703701D1CE36600B1B0A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B327036F1D1CE36600B1B0A4 /* libGYDataCenter.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B32703711D1CE36600B1B0A4 /* GYDataCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3D1DB4D1D1E2E1800645AA3 /* FMDBExtension */,
+				B32703721D1CE36600B1B0A4 /* GYDataCenter.h */,
+				B32265371D23A58300A37382 /* GYDataContext.h */,
+				B32265381D23A58300A37382 /* GYDataContext.m */,
+				B327037C1D1D143F00B1B0A4 /* GYDBRunner.h */,
+				B327037D1D1D143F00B1B0A4 /* GYDBRunner.m */,
+				B327037E1D1D143F00B1B0A4 /* GYModelObject.h */,
+				B327037F1D1D143F00B1B0A4 /* GYModelObject.m */,
+				B350EDB71D25398900BE8187 /* GYModelObjectProtocol.h */,
+				B32703821D1D1FC500B1B0A4 /* Utilities */,
+			);
+			path = GYDataCenter;
+			sourceTree = "<group>";
+		};
+		B32703821D1D1FC500B1B0A4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B32703851D1D1FC500B1B0A4 /* GYDCUtilities.h */,
+				B32703861D1D1FC500B1B0A4 /* GYDCUtilities.m */,
+				B32703871D1D1FC500B1B0A4 /* GYReflection.h */,
+				B32703881D1D1FC500B1B0A4 /* GYReflection.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B3D1DB4D1D1E2E1800645AA3 /* FMDBExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B3D1DB4E1D1E2EA100645AA3 /* FMDatabaseQueue+Async.h */,
+				B3D1DB4F1D1E2EA100645AA3 /* FMDatabaseQueue+Async.m */,
+			);
+			name = FMDBExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B327036E1D1CE36600B1B0A4 /* GYDataCenter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B32703781D1CE36600B1B0A4 /* Build configuration list for PBXNativeTarget "GYDataCenter" */;
+			buildPhases = (
+				8559EE63FC20CB89027EA190 /* 📦 Check Pods Manifest.lock */,
+				B327036B1D1CE36600B1B0A4 /* Sources */,
+				B327036C1D1CE36600B1B0A4 /* Frameworks */,
+				B327036D1D1CE36600B1B0A4 /* CopyFiles */,
+				100B6EB6A6FB46D637C29C03 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GYDataCenter;
+			productName = GYDataCenter;
+			productReference = B327036F1D1CE36600B1B0A4 /* libGYDataCenter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B32703671D1CE36600B1B0A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "佘泽坡";
+				TargetAttributes = {
+					B327036E1D1CE36600B1B0A4 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = B327036A1D1CE36600B1B0A4 /* Build configuration list for PBXProject "GYDataCenter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B32703661D1CE36600B1B0A4;
+			productRefGroup = B32703701D1CE36600B1B0A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B327036E1D1CE36600B1B0A4 /* GYDataCenter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		100B6EB6A6FB46D637C29C03 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GYDataCenter/Pods-GYDataCenter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8559EE63FC20CB89027EA190 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B327036B1D1CE36600B1B0A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3D1DB501D1E2EA100645AA3 /* FMDatabaseQueue+Async.m in Sources */,
+				B327038A1D1D1FC500B1B0A4 /* GYDCUtilities.m in Sources */,
+				B32703811D1D143F00B1B0A4 /* GYModelObject.m in Sources */,
+				B327038B1D1D1FC500B1B0A4 /* GYReflection.m in Sources */,
+				B32265391D23A58300A37382 /* GYDataContext.m in Sources */,
+				B32703801D1D143F00B1B0A4 /* GYDBRunner.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B32703761D1CE36600B1B0A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B32703771D1CE36600B1B0A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B32703791D1CE36600B1B0A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94E997F6081FFCC01D322DF3 /* Pods-GYDataCenter.debug.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B327037A1D1CE36600B1B0A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FEAA31934DF0092A3FC946F /* Pods-GYDataCenter.release.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B327036A1D1CE36600B1B0A4 /* Build configuration list for PBXProject "GYDataCenter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B32703761D1CE36600B1B0A4 /* Debug */,
+				B32703771D1CE36600B1B0A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B32703781D1CE36600B1B0A4 /* Build configuration list for PBXNativeTarget "GYDataCenter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B32703791D1CE36600B1B0A4 /* Debug */,
+				B327037A1D1CE36600B1B0A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B32703671D1CE36600B1B0A4 /* Project object */;
+}

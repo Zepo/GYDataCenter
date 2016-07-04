@@ -1,0 +1,6 @@
+use_frameworks!
+target 'GYDataCenter_Tests' do
+  pod 'GYDataCenter', :path => '../'
+  
+  
+end
