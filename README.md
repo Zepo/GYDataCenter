@@ -56,7 +56,7 @@ NSArray *employees = [Employee objectsWhere:@"WHERE employeeId < ? ORDER BY empl
                                   arguments:@[ @10 ]];
 ```
 
-# Automatically Crate & Update Table Schemas
+# Automatically Create & Update Table Schemas
 As shown above, once you have defined your model classes properly, you are ready to save and query your model objects. You don't have to create the database file or tables yourself. GYDataCenter will do this for you automatically.
 
 Also, after a table is created, if you add more persistent properties, GYDataCenter will update the table schema by adding the new columns for you. However, GYDataCenter **CANNOT** delete or rename an existing column. If you plan to do so, you need to create a new table and migrate the data yourself.
