@@ -128,7 +128,7 @@ Subclasses of GYModelObject
 # Relationship & Faulting
 GYDataCenter supports using a model class as the type of a persistent property. Like model **Employee** has a property named department, which is of the type of model **Department**. This is called a **relationship**. GYDataCenter will create a column to store the primary key values of Department in the Emplyee table. Relationship properties are **REQUIRED** to be declared as dynamic in implementation.
 ```objc
-@dynamic department
+@dynamic department;
 ```
 
 When you save an object of **Employee**, GYDataCenter will **NOT** insert a new record in the **Department** table for the department property. It will only store the primary key value of the department in the new employee record. Thus, if you want to save the department too, you need to do it explicitly.
