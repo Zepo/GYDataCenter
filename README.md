@@ -100,7 +100,7 @@ NSArray *employees = [Employee objectsWhere:@"WHERE department in (SELECT depart
                                   arguments:@[ @"Human Resource" ]];
 ```
 
-It is strongly recommended to bind values to where clauses instend of inline them. Doing so not only prevents SQL injection, but also increases the chance to reuse SQLite statements. So always use '?' as placeholders for values and pass them in the `arguments` argument.
+It is strongly recommended to bind values to where clauses instead of inlining them. Doing so not only prevents SQL injection, but also increases the chance to reuse SQLite statements. So always use '?' as placeholders for values and pass them in the `arguments` argument.
 
 # Supporting Property Types
 The following property types are currently supported:
