@@ -1011,6 +1011,7 @@ static const double kTransactionTimeInterval = 1;
             databaseInfo.writeCount = [[self.writeCounts objectForKey:dbName] integerValue];
             databaseInfo.databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[self pathForDbName:dbName]];
             [databaseInfo.databaseQueue setDatabaseQueueSpecific];
+            [databaseInfo.databaseQueue setShouldCacheStatements:YES];
             if (kAutoTransaction) {
                 [self autoTransactionForDatabaseInfo:databaseInfo];
             }

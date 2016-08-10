@@ -321,6 +321,47 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     }];
 }
 
+- (id)updateAndReturnObject:(Class<GYModelObjectProtocol>)modelClass
+                        set:(NSDictionary *)set
+                 primaryKey:(id)primaryKey {
+    NSAssert([modelClass primaryKey], @"This method is for class that has a primary key.");
+    if (!primaryKey) {
+        NSAssert(NO, @"primaryKey cannot be nil");
+        return nil;
+    }
+    
+    GYDataContextQueue *queue = [self queueForDBName:[modelClass dbName]];
+    
+    __block id result = nil;
+    [queue dispatchSync:^{
+        NSMutableDictionary *cache = [self tableCacheFromDBCache:queue.cache class:modelClass];
+        result = [cache objectForKey:primaryKey];
+        if (result) {
+            result = [result copy];
+            for (NSString *key in set) {
+                id value = [set objectForKey:key];
+                if (value == [NSNull null]) {
+                    [result setValue:nil forKey:key];
+                } else {
+                    [result setValue:value forKey:key];
+                }
+            }
+        }
+        
+        NSString *where = [self whereIdSqlForClass:modelClass];
+        NSArray *arguments = @[ primaryKey ];
+        [_dbRunner updateClass:modelClass set:set where:where arguments:arguments];
+        
+        if (!result) {
+            result = [_dbRunner objectsOfClass:modelClass properties:nil where:where arguments:arguments].firstObject;
+        }
+        if (result) {
+            [cache setObject:result forKey:primaryKey];
+        }
+    }];
+    return result;
+}
+
 - (void)updateObjects:(Class<GYModelObjectProtocol>)modelClass
                   set:(NSDictionary *)set
                 where:(NSString *)where

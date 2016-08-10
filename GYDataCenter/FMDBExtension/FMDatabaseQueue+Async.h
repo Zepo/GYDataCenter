@@ -12,6 +12,8 @@
 
 - (dispatch_queue_t)queue;
 
+- (void)setShouldCacheStatements:(BOOL)value;
+
 - (void)setDatabaseQueueSpecific;
 
 - (void)syncInDatabase:(void (^)(FMDatabase *db))block;

@@ -144,7 +144,7 @@
 
 /**
  *
- * @param modelClass Class of the model objects that you want to update.
+ * @param modelClass Class of the model object that you want to update.
  *
  * @param set Property and new value pairs.
  *
@@ -155,6 +155,22 @@
 - (void)updateObject:(Class<GYModelObjectProtocol>)modelClass
                  set:(NSDictionary *)set
           primaryKey:(id)primaryKey;
+
+/**
+ *
+ * @param modelClass Class of the model object that you want to update.
+ *
+ * @param set Property and new value pairs.
+ *
+ * @param primaryKey Primary key value of the model object that you want to update.
+ *
+ * @return A new updated object.
+ *
+ */
+
+- (id)updateAndReturnObject:(Class<GYModelObjectProtocol>)modelClass
+                        set:(NSDictionary *)set
+                 primaryKey:(id)primaryKey;
 
 /**
  *

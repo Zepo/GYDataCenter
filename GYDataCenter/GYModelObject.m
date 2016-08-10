@@ -232,19 +232,19 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
 #pragma mark - Data Manipulation
 
 + (GYModelObject *)objectForId:(id)primaryKey {
-    return [[GYDataContext sharedInstance] getObject:[self class] properties:nil primaryKey:primaryKey];
+    return [[GYDataContext sharedInstance] getObject:self properties:nil primaryKey:primaryKey];
 }
 
 + (NSArray *)objectsWhere:(NSString *)where arguments:(NSArray *)arguments {
-    return [[GYDataContext sharedInstance] getObjects:[self class] properties:nil where:where arguments:arguments];
+    return [[GYDataContext sharedInstance] getObjects:self properties:nil where:where arguments:arguments];
 }
 
 + (NSArray *)idsWhere:(NSString *)where arguments:(NSArray *)arguments {
-    return [[GYDataContext sharedInstance] getIds:[self class] where:where arguments:arguments];
+    return [[GYDataContext sharedInstance] getIds:self where:where arguments:arguments];
 }
 
 + (NSNumber *)aggregate:(NSString *)function where:(NSString *)where arguments:(NSArray *)arguments {
-    return [[GYDataContext sharedInstance] aggregate:[self class] function:function where:where arguments:arguments];
+    return [[GYDataContext sharedInstance] aggregate:self function:function where:where arguments:arguments];
 }
 
 - (void)save {
@@ -257,20 +257,16 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
 }
 
 + (void)deleteObjectsWhere:(NSString *)where arguments:(NSArray *)arguments {
-    [[GYDataContext sharedInstance] deleteObjects:[self class] where:where arguments:arguments];
+    [[GYDataContext sharedInstance] deleteObjects:self where:where arguments:arguments];
 }
 
 - (GYModelObject *)updateObjectSet:(NSDictionary *)set {
-    GYModelObject *newObject = [self copy];
-    for (NSString *key in set) {
-        [newObject setValue:[set objectForKey:key] forKey:key];
-    }
-    [newObject save];
-    return newObject;
+    Class<GYModelObjectProtocol> modelClass = [self class];
+    return [[GYDataContext sharedInstance] updateAndReturnObject:modelClass set:set primaryKey:[self valueForKey:[modelClass primaryKey]]];
 }
 
 + (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments {
-    [[GYDataContext sharedInstance] updateObjects:[self class] set:set where:where arguments:arguments];
+    [[GYDataContext sharedInstance] updateObjects:self set:set where:where arguments:arguments];
 }
 
 @end

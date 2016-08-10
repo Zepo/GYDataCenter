@@ -16,6 +16,10 @@ static const void * const kDatabaseQueueSpecificKey = &kDatabaseQueueSpecificKey
     return _queue;
 }
 
+- (void)setShouldCacheStatements:(BOOL)value {
+    [_db setShouldCacheStatements:value];
+}
+
 - (void)setDatabaseQueueSpecific {
     dispatch_queue_set_specific(_queue, kDatabaseQueueSpecificKey, (__bridge void *)self, NULL);
 }
