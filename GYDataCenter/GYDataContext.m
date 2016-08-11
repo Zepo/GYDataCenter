@@ -90,6 +90,10 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
                                                  selector:@selector(didReceiveMemoryWarning)
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(synchronizeAllData)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -412,9 +416,16 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 }
 
 - (void)synchronizeAllData {
-    [_dbRunner synchronizeAllDBs];
+    NSDictionary *dataCenterQueues;
     @synchronized(self.dataCenterQueues) {
-        [self.dataCenterQueues removeAllObjects];
+        dataCenterQueues = [self.dataCenterQueues copy];
+    }
+    for (NSString *dbName in dataCenterQueues.allKeys) {
+        GYDataContextQueue *queue = [dataCenterQueues objectForKey:dbName];
+        [queue dispatchSync:^{
+            [_dbRunner synchronizeDB:dbName];
+            [queue.cache removeAllObjects];
+        }];
     }
 }
 

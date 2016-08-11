@@ -158,6 +158,6 @@ typedef NS_ENUM(NSInteger, GYSQLJoinType) {
 
 - (void)vacuumAllDBs;
 
-- (void)synchronizeAllDBs;
+- (void)synchronizeDB:(NSString *)dbName;
 
 @end

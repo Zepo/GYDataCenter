@@ -80,17 +80,8 @@ static const double kTransactionTimeInterval = 1;
     if (self = [super init]) {
         _cacheDelegate = delegate;
         _databaseInfos = [[NSMutableDictionary alloc] init];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(synchronizeAllDBs)
-                                                     name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
     }
     return self;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Data Manipulation
@@ -624,43 +615,23 @@ static const double kTransactionTimeInterval = 1;
     }
 }
 
-- (void)synchronizeAllDBs {
-    @synchronized(_databaseInfos) {
-        [self analyzeAllDBs];
-        
-        for (NSString *dbName in _databaseInfos.allKeys) {
-            [self synchronizeDB:dbName];
-        }
-    }
-}
-
 - (void)synchronizeDB:(NSString *)dbName {
     @synchronized(_databaseInfos) {
         GYDatabaseInfo *databaseInfo = [_databaseInfos objectForKey:dbName];
-        if (databaseInfo.timer) {
-            dispatch_suspend(databaseInfo.timer);
-            [databaseInfo.databaseQueue syncInDatabase:^(FMDatabase *db) {
+        [databaseInfo.databaseQueue syncInDatabase:^(FMDatabase *db) {
+            if (databaseInfo.timer) {
+                dispatch_source_cancel(databaseInfo.timer);
+                databaseInfo.timer = nil;
                 [db commit];
-            }];
-        }
+            }
+            if (databaseInfo.writeCount >= 500) {
+                [db executeStatements:@"ANALYZE"];
+                databaseInfo.writeCount = 0;
+            }
+        }];
         [databaseInfo.databaseQueue close];
-        [_databaseInfos removeObjectForKey:dbName];
-    }
-}
-
-- (void)analyzeAllDBs {
-    @synchronized(_databaseInfos) {
-        for (NSString *dbName in _databaseInfos.allKeys) {
-            GYDatabaseInfo *databaseInfo = [_databaseInfos objectForKey:dbName];
-            [databaseInfo.databaseQueue syncInDatabase:^(FMDatabase *db) {
-                if (databaseInfo.writeCount >= 500) {
-                    [db executeStatements:@"ANALYZE;ANALYZE sqlite_master"];
-                    databaseInfo.writeCount = 0;
-                }
-                [self.writeCounts setObject:@(databaseInfo.writeCount) forKey:dbName];
-            }];
-        }
         
+        [self.writeCounts setObject:@(databaseInfo.writeCount) forKey:dbName];
         NSData *data = [NSPropertyListSerialization dataWithPropertyList:self.writeCounts
                                                                   format:NSPropertyListBinaryFormat_v1_0
                                                                  options:0
@@ -1012,10 +983,10 @@ static const double kTransactionTimeInterval = 1;
             databaseInfo.databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[self pathForDbName:dbName]];
             [databaseInfo.databaseQueue setDatabaseQueueSpecific];
             [databaseInfo.databaseQueue setShouldCacheStatements:YES];
-            if (kAutoTransaction) {
-                [self autoTransactionForDatabaseInfo:databaseInfo];
-            }
             [_databaseInfos setObject:databaseInfo forKey:dbName];
+        }
+        if (kAutoTransaction && !databaseInfo.timer) {
+            [self autoTransactionForDatabaseInfo:databaseInfo];
         }
         return databaseInfo;
     }
