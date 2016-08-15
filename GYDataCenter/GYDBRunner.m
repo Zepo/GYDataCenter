@@ -629,7 +629,10 @@ static const double kTransactionTimeInterval = 1;
                 databaseInfo.writeCount = 0;
             }
         }];
-        [databaseInfo.databaseQueue close];
+        @synchronized(databaseInfo.updatedTables) {
+            [databaseInfo.databaseQueue close];
+            [databaseInfo.updatedTables removeAllObjects];
+        }
         
         [self.writeCounts setObject:@(databaseInfo.writeCount) forKey:dbName];
         NSData *data = [NSPropertyListSerialization dataWithPropertyList:self.writeCounts
