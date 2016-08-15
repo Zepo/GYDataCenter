@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GYDataCenter'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'An alternative to Core Data for people who like using SQLite directly.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Zepo/GYDataCenter.git', :tag => s.version }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
 
   s.source_files = 'GYDataCenter/**/*'
   
