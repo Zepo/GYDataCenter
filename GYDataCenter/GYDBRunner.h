@@ -153,8 +153,8 @@ typedef NS_ENUM(NSInteger, GYSQLJoinType) {
               where:(NSString *)where
           arguments:(NSArray *)arguments;
 
-- (void)inTransaction:(dispatch_block_t)block
-               dbName:(NSString *)dbName;
+- (void)beginTransactionForDbName:(NSString *)dbName;
+- (void)commitTransactionForDbName:(NSString *)dbName;
 
 - (void)vacuumAllDBs;
 

@@ -573,8 +573,7 @@ static const double kTransactionTimeInterval = 1;
     ++databaseInfo.writeCount;
 }
 
-- (void)inTransaction:(dispatch_block_t)block
-               dbName:(NSString *)dbName {
+- (void)beginTransactionForDbName:(NSString *)dbName {
     GYDatabaseInfo *databaseInfo = [self databaseInfoForDbName:dbName];
     [databaseInfo.databaseQueue syncInDatabase:^(FMDatabase *db) {
         if (databaseInfo.timer) {
@@ -584,7 +583,12 @@ static const double kTransactionTimeInterval = 1;
         }
         
         [db beginTransaction];
-        block();
+    }];
+}
+
+- (void)commitTransactionForDbName:(NSString *)dbName {
+    GYDatabaseInfo *databaseInfo = [self databaseInfoForDbName:dbName];
+    [databaseInfo.databaseQueue syncInDatabase:^(FMDatabase *db) {
         [db commit];
         
         if (databaseInfo.timer) {

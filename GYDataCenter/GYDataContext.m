@@ -408,7 +408,11 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 - (void)inTransaction:(dispatch_block_t)block
                dbName:(NSString *)dbName {
     GYDataContextQueue *queue = [self queueForDBName:dbName];
-    [queue dispatchSync:block];
+    [queue dispatchSync:^{
+        [_dbRunner beginTransactionForDbName:dbName];
+        block();
+        [_dbRunner commitTransactionForDbName:dbName];
+    }];
 }
 
 - (void)vacuumAllDBs {

@@ -7,6 +7,7 @@
 //
 
 #import "FMDatabaseQueue+Async.h"
+#import <sqlite3.h>
 
 static const void * const kDatabaseQueueSpecificKey = &kDatabaseQueueSpecificKey;
 
