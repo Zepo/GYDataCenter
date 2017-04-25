@@ -10,7 +10,7 @@
 
 #import "GYModelObjectProtocol.h"
 
-@interface GYModelObject : NSObject<GYModelObjectProtocol, NSCopying>
+@interface GYModelObject<__covariant ObjectType> : NSObject<GYModelObjectProtocol, NSCopying>
 
 + (instancetype)objectWithDictionary:(NSDictionary *)dictionary;
 
@@ -22,7 +22,7 @@
  *
  */
 
-+ (GYModelObject *)objectForId:(id)primaryKey;
++ (instancetype)objectForId:(id)primaryKey;
 
 /**
  *
@@ -34,7 +34,7 @@
  *
  */
 
-+ (NSArray *)objectsWhere:(NSString *)where arguments:(NSArray *)arguments;
++ (NSArray<ObjectType> *)objectsWhere:(NSString *)where arguments:(NSArray *)arguments;
 
 /**
  *
@@ -81,7 +81,7 @@
  *
  */
 
-- (GYModelObject *)updateObjectSet:(NSDictionary *)set;
+- (instancetype)updateObjectSet:(NSDictionary *)set;
 
 /**
  *
@@ -93,6 +93,6 @@
  *
  */
 
-+ (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments;
++ (void)updateObjectsSet:(NSDictionary *)set where:(NSString *)where arguments:(NSArray *)arguments;
 
 @end
