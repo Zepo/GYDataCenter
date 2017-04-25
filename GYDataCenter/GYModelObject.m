@@ -221,7 +221,11 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
         for (NSString *property in propertyTypes.allKeys) {
             GYPropertyType type = [[propertyTypes objectForKey:property] unsignedIntegerValue];
             if (type == GYPropertyTypeRelationship) {
-                [(NSMutableDictionary *)result setObject:property forKey:[NSString stringWithFormat:@"set%@:", [property capitalizedString]]];
+                NSString *setterName = [NSString stringWithFormat:@"set%@%@:",
+                                        [[property substringToIndex:1] capitalizedString],
+                                        [property substringFromIndex:1]];
+                [(NSMutableDictionary *)result setObject:property forKey:setterName];
+                
             }
         }
         objc_setAssociatedObject(self, kRelationshipSetterNamesKey, result, OBJC_ASSOCIATION_COPY);
