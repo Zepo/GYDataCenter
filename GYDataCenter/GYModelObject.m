@@ -265,7 +265,7 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
     return [[GYDataContext sharedInstance] updateAndReturnObject:modelClass set:set primaryKey:[self valueForKey:[modelClass primaryKey]]];
 }
 
-+ (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments {
++ (void)updateObjectsSet:(NSDictionary *)set where:(NSString *)where arguments:(NSArray *)arguments {
     [[GYDataContext sharedInstance] updateObjects:self set:set where:where arguments:arguments];
 }
 

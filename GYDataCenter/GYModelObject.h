@@ -93,6 +93,6 @@
  *
  */
 
-+ (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments;
++ (void)updateObjectsSet:(NSDictionary *)set where:(NSString *)where arguments:(NSArray *)arguments;
 
 @end
