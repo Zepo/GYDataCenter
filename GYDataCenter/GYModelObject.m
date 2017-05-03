@@ -222,7 +222,7 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
             GYPropertyType type = [[propertyTypes objectForKey:property] unsignedIntegerValue];
             if (type == GYPropertyTypeRelationship) {
                 NSString *setterName = [NSString stringWithFormat:@"set%@%@:",
-                                        [[property substringToIndex:1] capitalizedString],
+                                        [[property substringToIndex:1] uppercaseString],
                                         [property substringFromIndex:1]];
                 [(NSMutableDictionary *)result setObject:property forKey:setterName];
                 
@@ -269,7 +269,7 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
     return [[GYDataContext sharedInstance] updateAndReturnObject:modelClass set:set primaryKey:[self valueForKey:[modelClass primaryKey]]];
 }
 
-+ (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments {
++ (void)updateObjectsSet:(NSDictionary *)set where:(NSString *)where arguments:(NSArray *)arguments {
     [[GYDataContext sharedInstance] updateObjects:self set:set where:where arguments:arguments];
 }
 
