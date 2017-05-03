@@ -235,7 +235,7 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
 
 #pragma mark - Data Manipulation
 
-+ (GYModelObject *)objectForId:(id)primaryKey {
++ (instancetype)objectForId:(id)primaryKey {
     return [[GYDataContext sharedInstance] getObject:self properties:nil primaryKey:primaryKey];
 }
 
@@ -264,7 +264,7 @@ static const void * const kRelationshipValuesKey = &kRelationshipValuesKey;
     [[GYDataContext sharedInstance] deleteObjects:self where:where arguments:arguments];
 }
 
-- (GYModelObject *)updateObjectSet:(NSDictionary *)set {
+- (instancetype)updateObjectSet:(NSDictionary *)set {
     Class<GYModelObjectProtocol> modelClass = [self class];
     return [[GYDataContext sharedInstance] updateAndReturnObject:modelClass set:set primaryKey:[self valueForKey:[modelClass primaryKey]]];
 }
