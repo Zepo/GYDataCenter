@@ -268,7 +268,7 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     
     GYDataContextQueue *queue = [self queueForDBName:[modelClass dbName]];
     
-    [queue dispatchAsync:^{
+    [queue dispatchSync:^{
         NSMutableDictionary *cache = [self tableCacheFromDBCache:queue.cache class:modelClass];
         id object = [cache objectForKey:primaryKey];
         if (object) {
@@ -316,7 +316,7 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     
     GYDataContextQueue *queue = [self queueForDBName:[modelClass dbName]];
     
-    [queue dispatchAsync:^{
+    [queue dispatchSync:^{
         NSMutableDictionary *cache = [self tableCacheFromDBCache:queue.cache class:modelClass];
         [cache removeObjectForKey:primaryKey];
         

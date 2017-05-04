@@ -518,15 +518,15 @@ static const double kTransactionTimeInterval = 1;
 - (void)deleteClass:(Class<GYModelObjectProtocol>)modelClass
               where:(NSString *)where
           arguments:(NSArray *)arguments {
+    NSString *sql = nil;
+    if (where) {
+        sql = [NSString stringWithFormat:@"DELETE FROM %@ %@", [modelClass tableName], where];
+    } else {
+        sql = [NSString stringWithFormat:@"DELETE FROM %@", [modelClass tableName]];
+    }
+    
     GYDatabaseInfo *databaseInfo = [self databaseInfoForClass:modelClass];
     [databaseInfo.databaseQueue asyncInDatabase:^(FMDatabase *db) {
-        NSString *sql = nil;
-        if (where) {
-            sql = [NSString stringWithFormat:@"DELETE FROM %@ %@", [modelClass tableName], where];
-        } else {
-            sql = [NSString stringWithFormat:@"DELETE FROM %@", [modelClass tableName]];
-        }
-        
         [self recordWriteOperationForDatabaseInfo:databaseInfo];
         [db executeUpdate:sql withArgumentsInArray:arguments];
     }];
@@ -538,29 +538,29 @@ static const double kTransactionTimeInterval = 1;
           arguments:(NSArray *)arguments {
     NSAssert([set count], @"DB Error: Argument 'set' should not be nil.");
     
+    NSMutableString *setSql = [[NSMutableString alloc] initWithString:@"SET "];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    id<GYModelObjectProtocol> modelObject = [[(Class)modelClass alloc] init];
+    NSArray *allKeys = set.allKeys;
+    NSUInteger count = [allKeys count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        if (i) {
+            [setSql appendString:@","];
+        }
+        NSString *key = [allKeys objectAtIndex:i];
+        [setSql appendFormat:@"%@=?", [GYDCUtilities columnForClass:modelClass property:key]];
+        [(id)modelObject setValue:[set objectForKey:key] forKey:key];
+        [values addObject:[self valueOfProperty:key ofObject:modelObject]];
+    }
+    
+    NSMutableString *sql = [[NSMutableString alloc] initWithFormat:@"UPDATE %@ %@", [modelClass tableName], setSql];
+    if (where) {
+        [sql appendFormat:@" %@", where];
+    }
+    [values addObjectsFromArray:arguments];
+    
     GYDatabaseInfo *databaseInfo = [self databaseInfoForClass:modelClass];
     [databaseInfo.databaseQueue asyncInDatabase:^(FMDatabase *db) {
-        NSMutableString *setSql = [[NSMutableString alloc] initWithString:@"SET "];
-        NSMutableArray *values = [[NSMutableArray alloc] init];
-        id<GYModelObjectProtocol> modelObject = [[(Class)modelClass alloc] init];
-        NSArray *allKeys = set.allKeys;
-        NSUInteger count = [allKeys count];
-        for (NSUInteger i = 0; i < count; ++i) {
-            if (i) {
-                [setSql appendString:@","];
-            }
-            NSString *key = [allKeys objectAtIndex:i];
-            [setSql appendFormat:@"%@=?", [GYDCUtilities columnForClass:modelClass property:key]];
-            [(id)modelObject setValue:[set objectForKey:key] forKey:key];
-            [values addObject:[self valueOfProperty:key ofObject:modelObject]];
-        }
-        
-        NSMutableString *sql = [[NSMutableString alloc] initWithFormat:@"UPDATE %@ %@", [modelClass tableName], setSql];
-        if (where) {
-            [sql appendFormat:@" %@", where];
-        }
-        [values addObjectsFromArray:arguments];
-        
         [self recordWriteOperationForDatabaseInfo:databaseInfo];
         [db executeUpdate:sql withArgumentsInArray:values];
     }];
