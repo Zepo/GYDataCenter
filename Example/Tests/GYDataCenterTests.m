@@ -162,7 +162,7 @@
     XCTAssertEqualObjects(newEmployee.name, @"Employee", @"Test failed: \"%s\"", __PRETTY_FUNCTION__);
     XCTAssertEqualObjects(newEmployee.department, employee.department, @"Test failed: \"%s\"", __PRETTY_FUNCTION__);
     
-    [Employee updateObjectsSet:@{ @"name" : @"Empty" } Where:nil arguments:nil];
+    [Employee updateObjectsSet:@{ @"name" : @"Empty" } where:nil arguments:nil];
     NSArray *employees = [Employee objectsWhere:nil arguments:nil];
     for (Employee *employee in employees) {
         XCTAssertEqualObjects(employee.name, @"Empty", @"Test failed: \"%s\"", __PRETTY_FUNCTION__);
