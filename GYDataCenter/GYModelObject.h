@@ -22,7 +22,7 @@
  *
  */
 
-+ (GYModelObject *)objectForId:(id)primaryKey;
++ (instancetype)objectForId:(id)primaryKey;
 
 /**
  *
@@ -81,7 +81,7 @@
  *
  */
 
-- (GYModelObject *)updateObjectSet:(NSDictionary *)set;
+- (instancetype)updateObjectSet:(NSDictionary *)set;
 
 /**
  *
@@ -93,6 +93,6 @@
  *
  */
 
-+ (void)updateObjectsSet:(NSDictionary *)set Where:(NSString *)where arguments:(NSArray *)arguments;
++ (void)updateObjectsSet:(NSDictionary *)set where:(NSString *)where arguments:(NSArray *)arguments;
 
 @end

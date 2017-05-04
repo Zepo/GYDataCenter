@@ -293,7 +293,7 @@ static const double kTransactionTimeInterval = 1;
         value = nil;
     }
     
-    if (propertyClass) {
+    if (propertyClass && value) {
         id cache = [_cacheDelegate objectOfClass:propertyClass id:value];
         if (!cache) {
             cache = [[(Class)propertyClass alloc] init];
